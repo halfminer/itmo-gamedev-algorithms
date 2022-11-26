@@ -38,9 +38,7 @@ public:
 	}
 
 	Array& operator=(const Array& other) {
-		if (this != &other) {
-			Array(other).swap(*this);
-		}
+		Array(other).swap(*this);
 		return *this;
 	}
 
@@ -150,7 +148,7 @@ public:
 		Iterator(simple_iterator cur, simple_iterator end):
 			_cur(cur), _end(end) {}
 
-		const T& get() const {
+		T& get() const {
 			return *_cur;
 		}
 
@@ -176,10 +174,12 @@ public:
 		ConstIterator(simple_iterator cur, simple_iterator end): 
 			Iterator(cur, end) {}
 
+		const T& get() const {
+			return *_cur;
+		}
+
 		void set(const T& value) = delete;
 	};
-
-
 
 	Iterator iterator() {
 		return Iterator(begin(), end());
