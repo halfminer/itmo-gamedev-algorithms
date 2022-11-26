@@ -1,15 +1,7 @@
-enable_testing()
+project(dynamic_array)
 
-add_executable(
-  dynamic_array
-  Array.h
-  ArrayTest.cpp
-)
+set(DYNAMIC_ARRAY_SRC Array.h)
 
-target_link_libraries(
-  dynamic_array
-  GTest::gtest_main
-)
+add_library(dynamic_array ${DYNAMIC_ARRAY_SRC})
 
-include(GoogleTest)
-gtest_discover_tests(dynamic_array)
+set_target_properties(dynamic_array PROPERTIES LINKER_LANGUAGE CXX)
